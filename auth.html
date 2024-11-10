@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirkelu jane Qiru</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2 id="authTitle">Tirkelu</h2>
+            <input type="text" id="username" placeholder="Esiminiz" required>
+            <input type="password" id="password" placeholder="Qupiya soz" required>
+            <button id="authButton" onclick="handleAuth()">Tirkelu</button>
+            <button id="loginButton" style="display: none;" onclick="showLogin()">Войти</button>
+        </div>
+    </div>
+
+    <script>
+        function handleAuth() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            
+            if (username && password) {
+                localStorage.setItem('isAuthenticated', 'true');
+                localStorage.setItem('username', username);
+                window.location.href = 'index.html';
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('authTitle').innerText = "Kiru";
+            document.getElementById('authButton').style.display = "none";
+            document.getElementById('loginButton').style.display = "inline-block";
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem('isAuthenticated')) {
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</body>
+</html>

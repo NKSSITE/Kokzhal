@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basty Kabinet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="top-bar">
+            <button onclick="window.location.href='index.html'">Basty Bet</button>
+            <button onclick="window.location.href='contacts.html'">Kasipkerlerge</button>
+            <button onclick="window.location.href='profile.html'">Jeke Kabinet</button>
+        </div>
+
+        <div id="profile" class="content-section">
+            <h3>Jeke Kabinet</h3>
+            <p>Salem, <span id="usernameDisplay"></span>!</p>
+            <p>Máseleniń oryndalý statýsy: <span id="requestStatus">In Progress</span></p>
+        </div>
+    </div>
+
+    <footer>
+        <div style="background-color: #fff; text-align: center; padding: 20px;">
+            <p>&copy; 2024 Barlyq quqyqtar saqtalgan.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            if (!localStorage.getItem('isAuthenticated')) {
+                window.location.href = 'auth.html';
+            }
+
+            const username = localStorage.getItem('username');
+            document.getElementById('usernameDisplay').textContent = username;
+
+            const statuses = ["Oryndaldy", "Oryndaluda", "Josparda"];
+            let randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            document.getElementById('requestStatus').textContent = randomStatus;
+        };
+    </script>
+</body>
+</html>
